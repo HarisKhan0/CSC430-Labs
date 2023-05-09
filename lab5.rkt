@@ -69,11 +69,18 @@ applies its first argument to its second argument five times.
        #'(#%app e ...)])))
 
 (module my-module (submod ".." sim-VVQS5)
- 
-  {+ 4 5}
-
+  
+  {{z} => {+ z 1}} ;Plusone func
+  {{v} => {{f} => {v f}}} ;One func
+  {{{v} => {{{f} => {v f}} 1}} {{z} => {+ z 1}}} ;One Plusone func
+  {{{v} => {{{f} => {v {v f}}} 1}} {{z} => {+ z 1}}} ;Two Plusone func
+  {{v} => {{f} => {{g} => {{e} => {{v g} {{f g} e}}}}}} ;add func
+  {{{v} => {{{f} => {{{g} => {{{e} => {{v g} {{f g} e}}} ;add one two plusone 3
+   3}
+   }{{z} => {+ z 1}}}
+   }{{v} => {{f} => {v f}}}}
+   }{{v} => {{f} => {v {v f}}}}}
 
   )
 
 (require 'my-module)
-
